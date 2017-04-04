@@ -43,7 +43,7 @@
 
 (defun craps ()
    "Plays a game of craps"
-   (let* ((throw (throw-dice))
+   (let ((throw (throw-dice))
      (result (cond
 	          ((instant-win-p throw) (list ‘you ‘win))
 	          ((instant-loss-p throw) (list ‘you ‘lose))
@@ -51,10 +51,9 @@
  	(append(list 'throw (first throw) 'and (second throw) '-- (say-throw throw) '-- result))))
 
 (defun try-for-point (point)
-   (let* ((throw (throw-dice))
-	(result (cond
-		((equal (sum-throw throw) point) (list ‘you ‘win))
-		((equal (sum-throw throw) 7) (list ‘you ‘lose))
-		(T (list 'throw 'again)))))
-	(append(list 'throw (first throw) 'and (second throw) '-- (say-throw throw) '-- result))))
-
+	(let* ((throw (throw-dice))
+		(result (cond
+			((equal (sum-throw throw) point) (list ‘you ‘win))
+			((equal (sum-throw throw) 7) (list 'you ‘lose))
+			(T (list 'throw 'again)))))
+		(append(list 'throw (first throw) 'and (second throw) '-- (say-throw throw) '-- result))))
